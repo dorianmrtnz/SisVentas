@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LOGIN));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,6 +79,9 @@
             this.btn_olvide_pass = new System.Windows.Forms.Button();
             this.lblResultadoContraseña = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.lblEstado_de_envio = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblSerialPc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datalistado)).BeginInit();
@@ -554,6 +558,7 @@
             // 
             // PanelRestaurarCuenta
             // 
+            this.PanelRestaurarCuenta.Controls.Add(this.lblEstado_de_envio);
             this.PanelRestaurarCuenta.Controls.Add(this.richTextBox1);
             this.PanelRestaurarCuenta.Controls.Add(this.button2);
             this.PanelRestaurarCuenta.Controls.Add(this.button1);
@@ -688,12 +693,37 @@
             this.richTextBox1.TabIndex = 15;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
+            // lblEstado_de_envio
+            // 
+            this.lblEstado_de_envio.AutoSize = true;
+            this.lblEstado_de_envio.ForeColor = System.Drawing.Color.White;
+            this.lblEstado_de_envio.Location = new System.Drawing.Point(47, 179);
+            this.lblEstado_de_envio.Name = "lblEstado_de_envio";
+            this.lblEstado_de_envio.Size = new System.Drawing.Size(41, 13);
+            this.lblEstado_de_envio.TabIndex = 16;
+            this.lblEstado_de_envio.Text = "label7";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblSerialPc
+            // 
+            this.lblSerialPc.AutoSize = true;
+            this.lblSerialPc.BackColor = System.Drawing.Color.White;
+            this.lblSerialPc.Location = new System.Drawing.Point(12, 318);
+            this.lblSerialPc.Name = "lblSerialPc";
+            this.lblSerialPc.Size = new System.Drawing.Size(41, 13);
+            this.lblSerialPc.TabIndex = 9;
+            this.lblSerialPc.Text = "label7";
+            // 
             // LOGIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(974, 749);
+            this.Controls.Add(this.lblSerialPc);
             this.Controls.Add(this.lblResultadoContraseña);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
@@ -779,5 +809,8 @@
         private System.Windows.Forms.Button btn_olvide_pass;
         private System.Windows.Forms.Label lblResultadoContraseña;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label lblEstado_de_envio;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lblSerialPc;
     }
 }

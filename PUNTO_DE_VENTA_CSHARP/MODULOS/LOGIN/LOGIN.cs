@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Management;
 
 namespace PUNTO_DE_VENTA_CSHARP.MODULOS
 {
@@ -90,6 +91,7 @@ namespace PUNTO_DE_VENTA_CSHARP.MODULOS
         {
             DIBUJARusuarios();
             panel2.Visible = false;
+            timer1.Start();
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -210,7 +212,7 @@ namespace PUNTO_DE_VENTA_CSHARP.MODULOS
             //boton enviar correo
             mostrar_usuarios_por_correo();  
             richTextBox1.Text = richTextBox1.Text.Replace("@pass", lblResultadoContraseña.Text);
-            enviarCorreo("ada369.technical@gmail.com", "", richTextBox1.Text, "Solicitud de Contraseña", txt_correo.Text, "");
+            enviarCorreo("internetexplorerboy@gmail.com", "201092Reco", richTextBox1.Text, "Solicitud de Contraseña", txt_correo.Text, "");
         }
 
         internal void enviarCorreo(string emisor, string password, string mensaje, string asunto, string destinatario, string ruta)
@@ -227,20 +229,37 @@ namespace PUNTO_DE_VENTA_CSHARP.MODULOS
                 correos.IsBodyHtml = true;
                 correos.To.Add((destinatario));
                 correos.From = new MailAddress(emisor);
-                envios.Credentials = new NetworkCredential(emisor, password);
 
+                envios.Credentials = new NetworkCredential(emisor, password);
                 envios.Host = "smtp.gmail.com";
                 envios.Port = 587;
-                envios.EnableSs1 = true;
+                envios.EnableSsl = true;
 
                 envios.Send(correos);
                 lblEstado_de_envio.Text = "ENVIADO";
                 MessageBox.Show("Contraseña Enviada, revisa tu correo Electrónico", "Success");
                 PanelRestaurarCuenta.Visible = false;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 lblEstado_de_envio.Text = "Correo no registrado";
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            try
+            {
+                ManagementObjectSearcher MOS = new ManagementObjectSearcher("select * from Win32_BaseBoard");
+                foreach(ManagementObject getserial in MOS.Get())
+                {
+                    lblSerialPc.Text = getserial.Properties["SerialNumber"].Value.ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

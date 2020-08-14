@@ -16,7 +16,7 @@ namespace PUNTO_DE_VENTA_CSHARP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MODULOS.LOGIN() );
+            Application.Run(new MODULOS.LOGIN());
         }
     }
 }
