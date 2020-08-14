@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
 
 namespace PUNTO_DE_VENTA_CSHARP.MODULOS
 {
@@ -139,6 +141,107 @@ namespace PUNTO_DE_VENTA_CSHARP.MODULOS
             }
             CONEXION.Tamaño_automatico_de_datatables.Multilinea(ref datalistado);
 
+        }
+
+        private void mostrar_correos()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter da;
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = CONEXION.CONEXIONMAESTRA.conexion;
+                con.Open();
+
+                da = new SqlDataAdapter("select Correo from USUARIO2 where Estado='ACTIVO'", con);
+                
+                da.Fill(dt);
+                txt_correo.DisplayMember = "Correo";
+                txt_correo.ValueMember = "Correo";
+                txt_correo.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            CONEXION.Tamaño_automatico_de_datatables.Multilinea(ref datalistado);
+
+        }
+        private void btn_olvide_pass_Click(object sender, EventArgs e)
+        {
+            PanelRestaurarCuenta.Visible = true;
+            mostrar_correos();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PanelRestaurarCuenta.Visible = false;
+        }
+
+        private void mostrar_usuarios_por_correo()
+        {
+            try
+            {
+                string resultado;
+                
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = CONEXION.CONEXIONMAESTRA.conexion;
+                SqlCommand da = new SqlCommand("buscar_USUARIO_por_correo", con);
+                
+
+                
+                da.CommandType = CommandType.StoredProcedure;
+                da.Parameters.AddWithValue("@correo", txt_correo.Text);
+
+                con.Open();
+                lblResultadoContraseña.Text = Convert.ToString(da.ExecuteScalar());
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //boton enviar correo
+            mostrar_usuarios_por_correo();  
+            richTextBox1.Text = richTextBox1.Text.Replace("@pass", lblResultadoContraseña.Text);
+            enviarCorreo("ada369.technical@gmail.com", "", richTextBox1.Text, "Solicitud de Contraseña", txt_correo.Text, "");
+        }
+
+        internal void enviarCorreo(string emisor, string password, string mensaje, string asunto, string destinatario, string ruta)
+        {
+            try
+            {
+                MailMessage correos = new MailMessage();
+                SmtpClient envios = new SmtpClient();
+                correos.To.Clear();
+                correos.Body = "";
+                correos.Subject = "";
+                correos.Body = mensaje;
+                correos.Subject = asunto;
+                correos.IsBodyHtml = true;
+                correos.To.Add((destinatario));
+                correos.From = new MailAddress(emisor);
+                envios.Credentials = new NetworkCredential(emisor, password);
+
+                envios.Host = "smtp.gmail.com";
+                envios.Port = 587;
+                envios.EnableSs1 = true;
+
+                envios.Send(correos);
+                lblEstado_de_envio.Text = "ENVIADO";
+                MessageBox.Show("Contraseña Enviada, revisa tu correo Electrónico", "Success");
+                PanelRestaurarCuenta.Visible = false;
+            }
+            catch(Exception ex)
+            {
+                lblEstado_de_envio.Text = "Correo no registrado";
+            }
         }
     }
 }
