@@ -42,7 +42,6 @@
             this.Eli = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lblid_usuario = new System.Windows.Forms.Label();
             this.panelICONO = new System.Windows.Forms.Panel();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,13 +54,15 @@
             this.picBox2 = new System.Windows.Forms.PictureBox();
             this.picBox3 = new System.Windows.Forms.PictureBox();
             this.picBox4 = new System.Windows.Forms.PictureBox();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.btnGuardar = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGuardarCambios = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lblid_usuario = new System.Windows.Forms.Label();
             this.lblnumeroIcono = new System.Windows.Forms.Label();
             this.lblAnuncioIcono = new System.Windows.Forms.Label();
             this.ICONO = new System.Windows.Forms.PictureBox();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.btnGuardar = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnGuardarCambios = new System.Windows.Forms.ToolStripMenuItem();
             this.txtrol = new System.Windows.Forms.ComboBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -78,7 +79,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dlg = new System.Windows.Forms.OpenFileDialog();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -99,9 +99,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ICONO)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ICONO)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -232,6 +232,7 @@
             this.Eli.Image = ((System.Drawing.Image)(resources.GetObject("Eli.Image")));
             this.Eli.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Eli.Name = "Eli";
+            this.Eli.ReadOnly = true;
             // 
             // panel4
             // 
@@ -248,7 +249,6 @@
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel5.BackgroundImage")));
             this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel5.Controls.Add(this.panelICONO);
             this.panel5.Controls.Add(this.menuStrip2);
             this.panel5.Controls.Add(this.panel10);
             this.panel5.Controls.Add(this.lblAnuncioIcono);
@@ -275,24 +275,15 @@
             this.panel5.TabIndex = 4;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
-            // lblid_usuario
-            // 
-            this.lblid_usuario.AutoSize = true;
-            this.lblid_usuario.Location = new System.Drawing.Point(28, 51);
-            this.lblid_usuario.Name = "lblid_usuario";
-            this.lblid_usuario.Size = new System.Drawing.Size(51, 20);
-            this.lblid_usuario.TabIndex = 12;
-            this.lblid_usuario.Text = "label7";
-            // 
             // panelICONO
             // 
             this.panelICONO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panelICONO.Controls.Add(this.pictureBox11);
             this.panelICONO.Controls.Add(this.flowLayoutPanel2);
             this.panelICONO.Controls.Add(this.flowLayoutPanel1);
-            this.panelICONO.Location = new System.Drawing.Point(14, 153);
+            this.panelICONO.Location = new System.Drawing.Point(37, 131);
             this.panelICONO.Name = "panelICONO";
-            this.panelICONO.Size = new System.Drawing.Size(602, 174);
+            this.panelICONO.Size = new System.Drawing.Size(685, 459);
             this.panelICONO.TabIndex = 5;
             // 
             // pictureBox11
@@ -417,6 +408,56 @@
             this.picBox4.TabStop = false;
             this.picBox4.Click += new System.EventHandler(this.picBox4_Click);
             // 
+            // menuStrip2
+            // 
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(228)))), ((int)(((byte)(176)))));
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnGuardar,
+            this.btnGuardarCambios});
+            this.menuStrip2.Location = new System.Drawing.Point(41, 239);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(248, 39);
+            this.menuStrip2.TabIndex = 2;
+            this.menuStrip2.Text = "menuStrip2";
+            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(228)))), ((int)(((byte)(176)))));
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(83, 35);
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // btnGuardarCambios
+            // 
+            this.btnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnGuardarCambios.Name = "btnGuardarCambios";
+            this.btnGuardarCambios.Size = new System.Drawing.Size(153, 35);
+            this.btnGuardarCambios.Text = "Guardar Cambios";
+            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.lblid_usuario);
+            this.panel10.Controls.Add(this.lblnumeroIcono);
+            this.panel10.Location = new System.Drawing.Point(74, 208);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(10, 11);
+            this.panel10.TabIndex = 14;
+            // 
+            // lblid_usuario
+            // 
+            this.lblid_usuario.AutoSize = true;
+            this.lblid_usuario.Location = new System.Drawing.Point(28, 51);
+            this.lblid_usuario.Name = "lblid_usuario";
+            this.lblid_usuario.Size = new System.Drawing.Size(51, 20);
+            this.lblid_usuario.TabIndex = 12;
+            this.lblid_usuario.Text = "label7";
+            // 
             // lblnumeroIcono
             // 
             this.lblnumeroIcono.AutoSize = true;
@@ -462,38 +503,6 @@
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // menuStrip2
-            // 
-            this.menuStrip2.AutoSize = false;
-            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(228)))), ((int)(((byte)(176)))));
-            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnGuardar,
-            this.btnGuardarCambios});
-            this.menuStrip2.Location = new System.Drawing.Point(41, 239);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(248, 39);
-            this.menuStrip2.TabIndex = 2;
-            this.menuStrip2.Text = "menuStrip2";
-            this.menuStrip2.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip2_ItemClicked);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(228)))), ((int)(((byte)(176)))));
-            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(83, 35);
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
-            // 
-            // btnGuardarCambios
-            // 
-            this.btnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnGuardarCambios.Name = "btnGuardarCambios";
-            this.btnGuardarCambios.Size = new System.Drawing.Size(153, 35);
-            this.btnGuardarCambios.Text = "Guardar Cambios";
-            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
             // 
             // txtrol
             // 
@@ -634,21 +643,13 @@
             // 
             this.dlg.FileName = "openFileDialog1";
             // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.lblid_usuario);
-            this.panel10.Controls.Add(this.lblnumeroIcono);
-            this.panel10.Location = new System.Drawing.Point(74, 208);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(10, 11);
-            this.panel10.TabIndex = 14;
-            // 
             // usuariosok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(827, 638);
+            this.Controls.Add(this.panelICONO);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.datalistado);
             this.Controls.Add(this.panel3);
@@ -683,11 +684,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ICONO)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ICONO)).EndInit();
             this.ResumeLayout(false);
 
         }
