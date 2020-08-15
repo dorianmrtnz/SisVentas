@@ -57,6 +57,12 @@
     <Compile Include="MODULOS\CAJA\APERTURA_DE_CAJA.Designer.cs">
       <DependentUpon>APERTURA_DE_CAJA.cs</DependentUpon>
     </Compile>
+    <Compile Include="MODULOS\CAJA\CIERRE_DE_CAJA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MODULOS\CAJA\CIERRE_DE_CAJA.Designer.cs">
+      <DependentUpon>CIERRE_DE_CAJA.cs</DependentUpon>
+    </Compile>
     <Compile Include="MODULOS\LOGIN\LOGIN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,16 +75,28 @@
     <Compile Include="MODULOS\USUARIOS_Y_PERMISOS\usuariosok.Designer.cs">
       <DependentUpon>usuariosok.cs</DependentUpon>
     </Compile>
+    <Compile Include="MODULOS\VENTAS_MENU_PRINCIPAL\VENTAS_MENU_PRINCIPALOk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MODULOS\VENTAS_MENU_PRINCIPAL\VENTAS_MENU_PRINCIPALOk.Designer.cs">
+      <DependentUpon>VENTAS_MENU_PRINCIPALOk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MODULOS\CAJA\APERTURA_DE_CAJA.resx">
       <DependentUpon>APERTURA_DE_CAJA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MODULOS\CAJA\CIERRE_DE_CAJA.resx">
+      <DependentUpon>CIERRE_DE_CAJA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MODULOS\LOGIN\LOGIN.resx">
       <DependentUpon>LOGIN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MODULOS\USUARIOS_Y_PERMISOS\usuariosok.resx">
       <DependentUpon>usuariosok.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MODULOS\VENTAS_MENU_PRINCIPAL\VENTAS_MENU_PRINCIPALOk.resx">
+      <DependentUpon>VENTAS_MENU_PRINCIPALOk.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

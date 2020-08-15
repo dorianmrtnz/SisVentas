@@ -246,6 +246,28 @@ namespace PUNTO_DE_VENTA_CSHARP.MODULOS
             }
         }
 
+        private void MOSTRAR_CAJA_POR_SERIAL()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                SqlDataAdapter da;
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = CONEXION.CONEXIONMAESTRA.conexion;
+                con.Open();
+
+                da = new SqlDataAdapter("mostrar_cajas_por_Serial_de_DiscoDuro", con);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@Serial", lblSerialPc.Text);
+                da.Fill(dt);
+                datalistado.DataSource = dt;
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
